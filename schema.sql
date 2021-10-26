@@ -1,32 +1,32 @@
 DROP DATABASE IF EXISTS team_db;
 CREATE DATABASE team_db;
+
 USE team_db;
 
-DROP TABLE IF EXISTS departments
-CREATE TABLE departments(
-  departmentName VARCHAR(30),
-  department_id  INT
+CREATE TABLE department (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(30) NOT NULL
 );
 
-DROP TABLE IF EXISTS roles
-CREATE TABLE roles(
+CREATE TABLE title (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   salary DECIMAL,
   jobTitle VARCHAR(30),
-  REFERENCES departments(id),
-  roles_id INT
+  title_id INT,
+  FOREIGN KEY (title_id) REFERENCES department(id)
+  ON DELETE SET NULL
 );
 
-DROP TABLE IF EXISTS employees
-CREATE TABLE employees(
-  id  INT PRIMARY KEY,
+CREATE TABLE employee (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   firstName VARCHAR(30),
   lastName VARCHAR(30),
   department VARCHAR(30),
-  manager_id INT,
-  REFERENCES roles(id),
-
+  employee_id INT,
+  title_id INT,
+   FOREIGN KEY (title_id) REFERENCES title(id)
+  ON DELETE SET NULL
 );
-
 
 
 

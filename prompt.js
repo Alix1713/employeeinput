@@ -16,7 +16,7 @@ inquirer
     ])
     .then((response) => {
         console.log(response)
-        response.confirm === response.password
+        response.confirm === response.name
             ? console.log('Success!')
             : console.log('Error')
     }
